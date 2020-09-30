@@ -1,31 +1,25 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Movie from "./components/movie";
 
-let title = "mandalorian";
+let searchTerm = "star wars";
 let type = "series";
 
-class App extends Component {
-  state = {
-    movie: {},
-  };
-
-  componentDidMount() {
-    fetch(`http://www.omdbapi.com/?t=${title}&type=${type}&apikey=17cb3543`)
+const App = () => {
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    fetch(`http://www.omdbapi.com/?s=${searchTerm}&type=${type}&apikey=17cb3543`)
       .then((r) => r.json())
       .then((m) => {
         console.log(m);
-        this.setState({ movie: m });
+        setItems(m.Search);
       })
       .catch(console.error);
-  }
-
-  render() {
-    return (
-      <div class="container">
-        <Movie movie={this.state.movie} />
-      </div>
-    );
-  }
-}
+  }, []);
+  return (
+    <div className="container">
+      <Movie items={items} />
+    </div>
+  );
+};
 
 export default App;
