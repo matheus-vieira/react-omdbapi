@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { get } from "../../service/media";
 import Context from "../Context";
 
 const ListItems = () => {
@@ -26,8 +27,9 @@ const ListItems = () => {
                 <p className="card-text mb-auto">{item.Plot}</p>
                 <button
                   type="button"
-                  onClick={() => {
-                    setSelectedItem(item);
+                  onClick={async () => {
+                    const fullItem = await get(item.imdbID);
+                    setSelectedItem(fullItem);
                   }}
                   className="btn btn-primary"
                   data-toggle="modal"

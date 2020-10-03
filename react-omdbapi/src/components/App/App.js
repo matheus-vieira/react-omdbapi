@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "../Search/Search";
 import ListItems from "../Items/ListItems";
-import Item from "../ItemDialog/ItemDialog";
+import ItemDialog from "../ItemDialog/ItemDialog";
 import { Provider } from "../Context";
 
 const App = () => (
@@ -12,7 +12,7 @@ const App = () => (
       </h1>
       <Search />
       <ListItems />
-      <Item />
+      <ItemDialog />
     </div>
   </Provider>
 );
