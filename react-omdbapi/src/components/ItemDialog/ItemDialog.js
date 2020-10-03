@@ -5,7 +5,7 @@ const Item = () => {
   const { selectedItem } = React.useContext(Context);
   const shouldShow = React.useMemo(() => Boolean(selectedItem), [selectedItem]);
   console.log(selectedItem, shouldShow);
-  return (
+  return shouldShow && (
     <div
       className={`modal fade ${shouldShow ? "show" : ""}`}
       id="itemModal"
@@ -17,7 +17,7 @@ const Item = () => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="itemModalLabel">
-              {shouldShow && selectedItem.Title}
+              {selectedItem.Title}
             </h5>
             <button
               type="button"
