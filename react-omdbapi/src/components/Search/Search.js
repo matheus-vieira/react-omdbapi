@@ -20,24 +20,29 @@ const Search = () => {
     const term = inputSearch.current.value || "";
     const results = await search(term, type);
     console.log(results);
-    setItems(results.Search ||[]);
+    setItems(results.Search || []);
   }, [inputSearch, type, setItems]);
 
   return (
     <div className="container">
-      <div className="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+      <div
+        className="btn-group btn-group-toggle btn-block"
+        data-toggle="buttons"
+      >
         {OPTIONS.map((option) => (
           <label
-            className={`btn btn-primary ${
-              option.value === type ? "active" : ""
-            }`}
+            className={
+              option.value === type
+                ? "btn btn-warning active font-weight-bolder"
+                : "btn btn-primary"
+            }
             key={option.id}
           >
             <input
               type="radio"
               name="radType"
               id={option.id}
-              onChange={handleType}
+              onClick={handleType}
               value={option.value}
             />
             {option.text}
