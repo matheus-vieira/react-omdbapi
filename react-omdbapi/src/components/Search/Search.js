@@ -9,7 +9,7 @@ const OPTIONS = [
 
 const Search = () => {
   const [type, setType] = React.useState("movie");
-  const { setItems } = React.useContext(Context);
+  const { setItems, setShowMore, setIndex } = React.useContext(Context);
   const inputSearch = React.useRef();
 
   const handleType = React.useCallback(
@@ -22,9 +22,12 @@ const Search = () => {
   const handleSearch = React.useCallback(async () => {
     const term = inputSearch.current.value || "";
     const results = await search(term, type);
-    console.log(results);
+    const newShowMore = results.Search.length < results.totalResults;
+
     setItems(results.Search || []);
-  }, [inputSearch, type, setItems]);
+    setShowMore(newShowMore);
+    setIndex(1);
+  }, [inputSearch, type, setItems, setShowMore, setIndex]);
 
   return (
     <div className="jumbotron p-4 p-md-5 text-white rounded bg-dark">
