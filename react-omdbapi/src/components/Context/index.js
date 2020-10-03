@@ -5,14 +5,29 @@ const Context = React.createContext({
   setItems: () => {},
   selectedItem: null,
   setSelectedItem: () => {},
+  showMore: true,
+  setShowMore: () => {},
+  index: 1,
+  setIndex: () => {},
 });
 
 export const Provider = ({ children }) => {
   const [items, setItems] = React.useState([]);
   const [selectedItem, setSelectedItem] = React.useState(null);
+  const [showMore, setShowMore] = React.useState(true);
+  const [index, setIndex] = React.useState(1);
   return (
     <Context.Provider
-      value={{ items, setItems, selectedItem, setSelectedItem }}
+      value={{
+        items,
+        setItems,
+        selectedItem,
+        setSelectedItem,
+        showMore,
+        setShowMore,
+        index,
+        setIndex,
+      }}
     >
       {children}
     </Context.Provider>
