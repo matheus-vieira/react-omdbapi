@@ -20,7 +20,7 @@ const ListItems = () => {
               <div className="col p-4 d-flex flex-column position-static">
                 <strong className="d-inline-block mb-2 text-primary"></strong>
                 <div className="mb-1 text-muted">
-                  Ano: {item.Year} - {item.Type === "movie" ? "Filme" : "Série"}
+                  {item.Type === "movie" ? "Filme" : "Série"} Ano: {item.Year}
                 </div>
                 <h3 className="mb-0">{item.Title}</h3>
                 <p className="card-text mb-auto">{item.Plot}</p>
