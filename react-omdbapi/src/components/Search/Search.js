@@ -12,9 +12,12 @@ const Search = () => {
   const { setItems } = React.useContext(Context);
   const inputSearch = React.useRef();
 
-  const handleType = React.useCallback((e) => setType(e.target.value), [
-    setType,
-  ]);
+  const handleType = React.useCallback(
+    (e) => {
+      setType(e.target.value);
+    },
+    [setType]
+  );
 
   const handleSearch = React.useCallback(async () => {
     const term = inputSearch.current.value || "";
@@ -24,7 +27,7 @@ const Search = () => {
   }, [inputSearch, type, setItems]);
 
   return (
-    <div className="container">
+    <div className="jumbotron p-4 p-md-5 text-white rounded bg-dark">
       <div
         className="btn-group btn-group-toggle btn-block"
         data-toggle="buttons"
@@ -33,7 +36,7 @@ const Search = () => {
           <label
             className={
               option.value === type
-                ? "btn btn-warning active font-weight-bolder"
+                ? "btn btn-primary active font-weight-bolder"
                 : "btn btn-primary"
             }
             key={option.id}
