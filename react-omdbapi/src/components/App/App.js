@@ -7,11 +7,9 @@ import { Provider } from "../Context";
 const App = () => (
   <Provider>
     <div className="container">
-      <div>
-        <center>
-          <h1>Buscar Filmes na Open Movie Database API (OMDBAPI)</h1>
-        </center>
-      </div>
+      <h1 className="text-center">
+        Buscar Filmes na Open Movie Database API (OMDBAPI)
+      </h1>
       <Search />
       <ListItems />
       <Item />
