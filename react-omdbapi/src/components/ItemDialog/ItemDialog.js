@@ -4,7 +4,7 @@ import Context from "../Context";
 const ItemDialog = () => {
   const { selectedItem } = React.useContext(Context);
   const shouldShow = React.useMemo(() => Boolean(selectedItem), [selectedItem]);
-  console.log(selectedItem, shouldShow);
+
   return (
     shouldShow && (
       <div
@@ -18,7 +18,8 @@ const ItemDialog = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="itemModalLabel">
-                {selectedItem.Title} - {selectedItem.Type === "movie" ? "Filme" : "Série"}
+                {selectedItem.Title} -{" "}
+                {selectedItem.Type === "movie" ? "Filme" : "Série"}
               </h5>
               <button
                 type="button"
@@ -82,7 +83,9 @@ const ItemDialog = () => {
                 type="button"
                 className="btn btn-primary"
                 data-dismiss="modal"
-              >Fechar</button>
+              >
+                Fechar
+              </button>
             </div>
           </div>
         </div>
